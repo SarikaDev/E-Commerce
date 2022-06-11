@@ -1,0 +1,24 @@
+
+h1,h2,h3,h4,h5,p,span{
+  font-family:'Signika','Alegreya Sans'
+}
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 0px;
+  font-family:'Signika','Alegreya Sans'
+}
+
+body {
+  background: #343a40;
+}
+
+  /* footer{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+  }
+
+  */
