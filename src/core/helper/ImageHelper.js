@@ -14,7 +14,7 @@ const ImageHelper = ({ product }) => {
                 <CardImg
                     src={`${imageurl}`}
                     alt='photos'
-                    width="100%"
+                    style={{height:'250px',objectFit:'cover'}}
                     className="mb-3 rounded "
                 />
             </Col>

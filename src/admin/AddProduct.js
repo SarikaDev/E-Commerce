@@ -54,8 +54,8 @@ export const AddProduct = () => {
     const value = (name === 'photo' ? e.target.files[0] : e.target.value);
     formData.set(name, value);
     setValues((prev) => ({ ...prev, [name]: e.target.value }))
-    console.log(formData.entries('photo').next())
   }
+ 
 
   const onSubmit = useCallback((e) => {
     e.preventDefault();

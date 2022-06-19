@@ -4,7 +4,7 @@ import {Outlet,Navigate} from 'react-router-dom';
 const AdminRoutes = () => {
  const isAuth = isAuthenticated();
 
- return (isAuth && isAuth.user.role === 1 ) ? <Outlet/> : <Navigate to='/userDashboard' />;
+ return (isAuth && isAuth.user.role === 1 ) ? <Outlet/> : <Navigate to='/userProfile' />;
  
 };
 

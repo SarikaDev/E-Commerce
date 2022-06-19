@@ -58,7 +58,7 @@ const Signin = () => {
                     localStorage.setItem('jwt', JSON.stringify(data));
                     console.log(data)
                     if (data && data.user.role === 1) { navigate('/adminDashboard') }
-                    else { navigate('/userDashboard') };
+                    else { navigate('/userProfile') };
                 }
             })
     },[email, navigate, password])

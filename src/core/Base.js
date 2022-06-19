@@ -11,7 +11,7 @@ const Base = ({ title = 'mytitle', description = 'my description', className = '
                     <h4 style={{fontFamily:'Signika'}}className='lead'>{description}</h4>
                 </div>
             </header>
-                <div className={className}>{children}</div>
+                <div className={className} style={{minHeight:'100vh'}}>{children}</div>
 
             <footer className=' footer mt-auto py-3 '>
                 <div className=' container-fluid bg-default text-white text-center py-3' style={{boxShadow:"2px 2px 2px black , -2px -2px 2px white"}}>

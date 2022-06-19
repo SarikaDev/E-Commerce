@@ -25,6 +25,7 @@ const AdminDashBoard = () => {
                                 <NavLink to='/admin/manage/categories' className='text-success nav-link' style={{ fontWeight: 'bolder' }} >Manage Categories</NavLink>
                                 <NavLink to='/admin/product' className='text-success nav-link' style={{ fontWeight: 'bolder' }} >Create Product</NavLink>
                                 <NavLink to='/admin/manage/products' className='text-success nav-link' style={{ fontWeight: 'bolder' }} >Manage Products</NavLink>
+                                <NavLink to='/admin/create/orders' className='text-success nav-link' style={{ fontWeight: 'bolder' }} >Create Orders</NavLink>
                                 <NavLink to='/admin/orders' className='text-success nav-link' style={{ fontWeight: 'bolder' }} >Manage Orders</NavLink>
                             </ListGroupItem>
                         </ListGroup>

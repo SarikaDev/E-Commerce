@@ -1,97 +1,63 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import ImageHelper from './helper/ImageHelper';
-import { useNavigate } from 'react-router-dom';
-import { addItemToCart } from './helper/CartHelper';
-import { Card, CardTitle, CardBody, Button, Badge ,Row } from 'reactstrap';
-import {IoMdPricetag} from 'react-icons/io';
+import { Card, CardTitle, CardBody, Button, Badge, Row, CardSubtitle } from 'reactstrap';
+import { IoMdPricetag } from 'react-icons/io';
+import { useCart } from '../contexts/CartContext';
 
 
-const MainCard = ({ AddToCart = true, RemoveFromCart = false, productData }) => {
-    const navigate = useNavigate();
-    const [count, setCount] = useState(productData.count);
+const MainCard = ({ productData }) => {
+    const { cartItems, addToCart, removeFromCart } = useCart();
+
+    const count = useMemo(() => {
+        const item = cartItems.find(cartItem => cartItem._id === productData._id)
+        return item?.count || 0
+    }, [cartItems, productData._id]);
+
+    console.log(productData.stock)
+
     const cardTitle = productData ? productData.name : 'A photo from Default DB'
     const cardDescription = productData ? productData.description : 'A photo from Default Deacription '
     const cardPrice = productData ? productData.price : 'Default 5  '
-    const cardCategory = productData ? productData.category.name : 'Default 5  '
+    const cardCategory = productData ? productData?.category?.name : 'Default 5  '
+    const cardStock = productData ? productData.stock : 'Default 5  '
 
-    const [redirect, setRedirect] = useState('')
-
-
-
-    const addToCart = () => {
-        addItemToCart(productData, () => setRedirect(true))
-    }
-
-    const getARedirect = (redirect) => {
-        if (redirect) {
-            return (navigate('/cart'));
-        }
-    }
-
-    const showAddToCart = (AddToCart) => {
-        return (
-            AddToCart && (
-                <Button
-                    onClick={addToCart}
-                    className="btn btn-success display-block text-white  mt-2 mb-2 "
-                >
-                    Add to Cart
-                </Button>
-            )
-        )
-    }
-
-    const removeFromCart = () => {
-        return (
-            RemoveFromCart && (
-                <button
-                    onClick={() => { }}
-                    className="btn btn-block btn-outline-danger mt-2 mb-2"
-                >
-                    Remove from cart
-                </button>
-            )
-        )
-    }
 
     return (<>
-        {redirect}
         <Card className=" text-white bg-dark border border-success " inverse>
-            <Badge className='m-2 py-2 text-black' pill color="warning" >
-                New
-            </Badge>
+            <div className='text-center mt-2'>
+                <Badge className='m-2 py-2 text-black' pill color="warning" >
+
+                    {cardCategory}
+                </Badge>
+            </div>
 
             <CardBody >
-                {getARedirect(true)}
-                <Row className='my-1'> 
-                <ImageHelper product={productData} />
+                <Row>
+                    <ImageHelper product={productData} />
                 </Row>
-                <CardTitle tag="h5" className='mt-4'>
-                    Category  :  {cardCategory}
-                </CardTitle>
-                
 
                 <CardTitle tag="h5" className='mt-4'>
-                    Product   :  {cardTitle}
+                    {cardTitle}
                 </CardTitle>
-                <CardTitle tag="h5" className='mt-4'>
-                    Description    :  {cardDescription}
-                </CardTitle>
+                <p className='my-2'>
 
-                <CardTitle tag="h5" className=' mt-4'>
-              Price ($)  : {cardPrice} <IoMdPricetag fontSize={20}/>
-                </CardTitle>
+                    {cardDescription}
+                </p>
+                <p >
 
-                <div className="row" >
-                    <div className="col-10" >
-                        {showAddToCart(AddToCart)}
-                    </div>
-                    <div className="col-12 " >
-                        {removeFromCart(RemoveFromCart)}
-                    </div>
+                    Price ($)  : {cardPrice} <IoMdPricetag fontSize={20} />
+                </p>
+                <p>
+
+                    {cardStock} Items Left
+                </p>
+
+                <div className="flex" >
+                    <Button onClick={() => removeFromCart(productData)}> - </Button>
+                    <Button> {count} </Button>
+                    <Button onClick={() => addToCart(productData)}> + </Button>
                 </div>
             </CardBody>
-
         </Card>
     </>
     );

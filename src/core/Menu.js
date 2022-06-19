@@ -9,17 +9,19 @@ const Menu = () => {
     const handleHome = () => {
         navigate('/');
     }
-    const handleProfile = () => {
-        navigate('/profile');
+
+    const handleCart = () => {
+        navigate('/cart')
     }
-    // const handleCart = () => {
-    //     navigate('/cart')
-    // }
-    const handleuserDashboard = () => {
-        navigate('/userDashboard')
-    }
+   
     const handleAdminDashboard = () => {
         navigate('/admin-dashboard')
+    }
+    const handleUProfile=()=>{
+        navigate('/userProfile')
+    }
+    const handleAProfile=()=>{
+        navigate('/adminProfile')
     }
     const handleSignup = () => {
         navigate('/Signup')
@@ -37,44 +39,45 @@ const Menu = () => {
                     <NavLink style={{ color: 'green' }} className='nav-link' to='/' onClick={handleHome}>Home</NavLink>
                 </li>
                 <li className='nav-item mx-2'>
-                    <NavLink style={{ color: 'green' }} className='nav-link' to='/cart' onClick={handleProfile}>Cart</NavLink>
-                </li>
-                {/* <li className='nav-item   mx-2 '>
                     <NavLink style={{ color: 'green' }} className='nav-link' to='/cart' onClick={handleCart}>Cart</NavLink>
-                </li> */}
-
-                {isAuth && isAuth.user.role === 0 && ( 
-                <li className='nav-item     mx-2'>
-                    <NavLink style={{ color: 'green' }} className='nav-link' to='/userDashboard' onClick={handleuserDashboard}>U.Dashboard</NavLink>
                 </li>
+
+
+                {isAuth && isAuth.user.role === 0 && (
+                    <>
+                        
+                        <li className='nav-item mx-2'>
+                            <NavLink style={{ color: 'green' }} className='nav-link' to='/userProfile' onClick={handleUProfile}>Profile</NavLink>
+                        </li>
+                    </>
                 )}
 
                 {isAuth && isAuth.user.role === 1 && (
-               <>
-               <li className='nav-item  mx-2'>
-                    < NavLink style={{ color: 'green' }} className='nav-link' to='/adminDashboard' onClick={handleAdminDashboard}>A.Dashboard</NavLink>
-                </li> 
-                 {/* <li className='nav-item     mx-2'>
-                 <NavLink style={{ color: 'green' }} className='nav-link' to='/userDashboard' onClick={handleuserDashboard}>U.Dashboard</NavLink>
-             </li> */}
-               </>
+                    <>
+                        <li className='nav-item  mx-2'>
+                            < NavLink style={{ color: 'green' }} className='nav-link' to='/adminDashboard' onClick={handleAdminDashboard}>A.Dashboard</NavLink>
+                        </li>
+                        <li className='nav-item mx-2'>
+                            <NavLink style={{ color: 'green' }} className='nav-link' to='/adminProfile' onClick={handleAProfile}>A.Profile</NavLink>
+                        </li>
+                    </>
                 )}
 
-{/* Condictional Rendering */}
+                {/* Condictional Rendering */}
 
                 {isAuth && <li className='nav-item  mx-2'>
                     <NavLink style={{ color: 'red' }} className='nav-link' to='/logout' onClick={handleLogout}>Sign out</NavLink>
                 </li>
                 }
                 {!isAuth ?
-                   ( <>
-                   <li className='nav-item  mx-2'>
-                        <NavLink style={{ color: 'green' }} className='nav-link' to='/signup' onClick={handleSignup}>sign up</NavLink>
-                    </li> 
-                     <li className='nav-item  mx-2'>
-                     <NavLink style={{ color: 'green' }} className='nav-link' to='/signin' onClick={handleSignin}>sign in</NavLink>
-                 </li>
-                   </>
+                    (<>
+                        <li className='nav-item  mx-2'>
+                            <NavLink style={{ color: 'green' }} className='nav-link' to='/signup' onClick={handleSignup}>sign up</NavLink>
+                        </li>
+                        <li className='nav-item  mx-2'>
+                            <NavLink style={{ color: 'green' }} className='nav-link' to='/signin' onClick={handleSignin}>sign in</NavLink>
+                        </li>
+                    </>
                     ) :
                     null
                 }

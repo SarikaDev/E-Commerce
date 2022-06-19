@@ -12,17 +12,17 @@ const Logout = () => {
   const { token } = Auth;
 
   const handleOnClick = useCallback(() => {
-    
     signout(() => {
       localStorage.removeItem('jwt');
+      localStorage.removeItem('cart');
     },token).then((res)=>{
       setMessage(res.message)
-      setSuccess(true)
-    
-    })
-      
+      setSuccess(true)    
+    }) 
     .catch((er)=>{console.log(er)}) ;
   },[token])
+  if (typeof window == 'undefined') {
+  }
 
 
   return (
