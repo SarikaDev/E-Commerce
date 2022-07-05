@@ -57,8 +57,19 @@ const Signin = () => {
                     setValues((prev)=>( { ...prev, error: false, success: true }) )
                     localStorage.setItem('jwt', JSON.stringify(data));
                     console.log(data)
-                    if (data && data.user.role === 1) { navigate('/adminDashboard') }
-                    else { navigate('/userProfile') };
+                    if (data && data.user.role === 1) { 
+                        setTimeout(()=>{
+                            navigate('/adminDashboard') 
+                        },1000)
+                    }
+                    else { 
+                        
+                        setTimeout(()=>{
+                            navigate('/userProfile') 
+                            
+                        },1000)
+                    
+                    };
                 }
             })
     },[email, navigate, password])

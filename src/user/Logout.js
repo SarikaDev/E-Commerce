@@ -27,7 +27,7 @@ const Logout = () => {
 
   return (
     <div>
-      <Base title='Logout Page' >
+      <Base title='Logout Page '  description=' Visit Again'>
         <Alert style={{display: success ? 'block' : 'none'}}> {message} <Link to="/signin">Redirect  to Home  </Link></Alert> 
         <Button className='btn btn-danger ' onClick={handleOnClick}> Log Out</Button>
       </Base>
