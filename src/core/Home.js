@@ -27,7 +27,6 @@ const Home = () => {
   }, [loadAllProducts])
 
   
-
   return (
     <div>{error}
       <Base title='Home Page' description='welcome to the T-shirt Store' >

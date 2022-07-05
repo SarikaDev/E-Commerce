@@ -88,7 +88,7 @@ const CartProfile = () => {
                   <h2>{cartItem.count}   <TbPlayerTrackNext />  <AiOutlineShoppingCart />  </h2>
                 </Row>
                 <CardTitle tag="h5" className='mt-4'>
-                  Category  :  {cartItem.category.name}
+                  Category  :  {cartItem?.category?.name}
                 </CardTitle>
                 <CardTitle tag="h5" className='mt-4'>
                   Product   :  {cartItem.name}
