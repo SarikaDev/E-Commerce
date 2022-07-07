@@ -29,6 +29,7 @@ const App = () => {
     <div>
       <Routes>
         <Route element={<GuestRoutes />}>
+          <Route path='/' element={<Home />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/signin' element={<Signin />} />
         </Route>
@@ -50,7 +51,6 @@ const App = () => {
             <Route path='/user/edit/:userId' element={<UpdateUserName/>} />
           <Route path='/userProfile' element={<UserProfile />} />
           <Route path='/logout' element={<Logout />} />
-          <Route path='/' element={<Home />} />
         </Route>
       </Routes>
     </div>
